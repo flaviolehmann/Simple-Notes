@@ -2,6 +2,7 @@ package br.com.ledscolatina.backend.controller;
 
 import br.com.ledscolatina.backend.domain.Caderno;
 import br.com.ledscolatina.backend.domain.Nota;
+import br.com.ledscolatina.backend.except.custom.CadernoNotFoundException;
 import br.com.ledscolatina.backend.repository.CadernoRepository;
 import br.com.ledscolatina.backend.repository.NotaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,14 @@ public class NotaController {
     }
 
     @PostMapping
-    public Nota create(@RequestBody Nota nota) {
-        return notaRepository.save(nota);
+    public ResponseEntity<?> create(@RequestBody Nota nota) {
+        Long idCadernoProcurado = nota.getCaderno().getId();
+        return cadernoRepository.findById(idCadernoProcurado)
+                .map(record -> {
+                    nota.setCaderno(record);
+                    return ResponseEntity.ok(notaRepository.save(nota));
+                })
+                .orElseThrow(() -> new CadernoNotFoundException(idCadernoProcurado));
     }
 
     @GetMapping("{id}")

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,7 @@ public class CadernoController {
     }
 
     @PostMapping
-    public Caderno create(@RequestBody Caderno caderno) {
+    public Caderno create(@Valid @RequestBody Caderno caderno) {
         return cadernoRepository.save(caderno);
     }
 
