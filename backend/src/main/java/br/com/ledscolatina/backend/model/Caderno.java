@@ -24,7 +24,7 @@ public class Caderno {
     @Size(max = 5000, message = "A descrição deve conter um máximo de 5000 caracteres.")
     private String descricao;
 
-    @OneToMany(mappedBy = "caderno")
+    @OneToMany(mappedBy = "caderno", cascade = CascadeType.ALL)
     private List<Nota> notas;
 
     @NotNull(message = "Todo caderno deve pertencer a um usuário.")

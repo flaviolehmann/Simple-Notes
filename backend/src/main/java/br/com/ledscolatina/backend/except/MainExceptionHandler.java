@@ -1,6 +1,7 @@
 package br.com.ledscolatina.backend.except;
 
 import br.com.ledscolatina.backend.except.custom.CadernoNotFoundException;
+import br.com.ledscolatina.backend.except.custom.NotaNotFoundException;
 import br.com.ledscolatina.backend.except.custom.UsuarioNotFoundException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpHeaders;
@@ -48,6 +49,21 @@ public class MainExceptionHandler extends ResponseEntityExceptionHandler {
                         400,
                         "Caderno inexistente no sistema.",
                         "caderno"
+                ),
+                new HttpHeaders(),
+                HttpStatus.BAD_REQUEST,
+                request
+        );
+    }
+
+    @ExceptionHandler(value = { NotaNotFoundException.class })
+    protected ResponseEntity<Object> handleNotaNotFoundException(RuntimeException ex, WebRequest request) {
+        return handleExceptionInternal(
+                ex,
+                new ErrorResponseBody(
+                        400,
+                        "Nota inexistente no sistema.",
+                        "nota"
                 ),
                 new HttpHeaders(),
                 HttpStatus.BAD_REQUEST,
