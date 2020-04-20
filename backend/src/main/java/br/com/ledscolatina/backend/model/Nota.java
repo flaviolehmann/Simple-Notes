@@ -1,12 +1,12 @@
-package br.com.ledscolatina.backend.domain;
+package br.com.ledscolatina.backend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter @Setter
@@ -23,9 +23,14 @@ public class Nota {
     private String descricao;
 
     @NotNull(message = "Toda nota deve pertencer a um caderno.")
-    @JsonIgnoreProperties("notas")
     @ManyToOne
     @JoinColumn(name="caderno_id")
     private Caderno caderno;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
 }
