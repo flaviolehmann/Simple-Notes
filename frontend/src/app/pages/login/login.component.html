@@ -1,0 +1,73 @@
+<div class="mback">
+  <div class="container main-card">
+      <mat-card class="shadow-lg">
+          <form
+              [formGroup]="loginForm"
+              (ngSubmit)="onSubmit(loginForm)"
+              #mainForm
+          >
+              <div class="container" style="text-align: center;">
+                  <div class="row">
+                      <div class="col">
+                          <img
+                              src="../../../assets/notebook.svg"
+                              alt="lobo-logo"
+                              style="width: 120px;"
+                          >
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col">
+                        <p class="mt-2"> Simple Notes </p>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col">
+                          <mat-form-field class="full-width">
+                              <input
+                                  matInput
+                                  placeholder="User"
+                                  formControlName="user"
+                                  #username
+                                  required
+                              />
+                          </mat-form-field>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col">
+                          <mat-form-field class="full-width">
+                              <input
+                                  matInput
+                                  formControlName="password"
+                                  placeholder="Password"
+                                  type="password"
+                                  #password
+                                  required
+                              />
+                          </mat-form-field>
+                      </div>
+                  </div>
+                  <div class="row mt-3">
+                      <div class="col">
+                          <button
+                              mat-raised-button
+                              class="full-width"
+                              color="primary"
+                              [class.spinner]="loading"
+                              [disabled]="!this.loginForm.valid || loading"
+                          >
+                              LOGIN
+                          </button>
+                      </div>
+                  </div>
+                  <div class="row mt-2">
+                      <div class="col text-align-center">
+                        <a routerLink="/sign-up"> Sign up </a>
+                      </div>
+                  </div>
+              </div>
+          </form>        
+      </mat-card>
+  </div>
+</div>
