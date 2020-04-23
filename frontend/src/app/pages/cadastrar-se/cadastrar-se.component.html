@@ -1,0 +1,75 @@
+<div class="mback">
+  <div class="container main-card">
+      <mat-card class="shadow-lg">
+          <form [formGroup]="signUpForm">
+              <div class="container" style="text-align: center;">
+                  <div class="row">
+                      <div class="col">
+                        <p class="mt-2"> Enter your data </p>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col">
+                          <mat-form-field class="full-width">
+                              <input
+                                  matInput
+                                  placeholder="User"
+                                  formControlName="username"
+                                  #username
+                                  required
+                              />
+                          </mat-form-field>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col">
+                          <mat-form-field class="full-width">
+                              <input
+                                  matInput
+                                  formControlName="password0"
+                                  placeholder="Password"
+                                  type="password"
+                                  #password
+                                  required
+                              />
+                          </mat-form-field>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input
+                                matInput
+                                formControlName="password1"
+                                placeholder="Repeat your password"
+                                type="password"
+                                #password
+                                required
+                            />
+                        </mat-form-field>
+                    </div>
+                </div>
+                  <div class="row mt-3">
+                      <div class="col">
+                          <button
+                              mat-raised-button
+                              (click)="onSubmit()"
+                              class="full-width"
+                              color="primary"
+                              [class.spinner]="loading"
+                              [disabled]="!signUpForm.valid || loading"
+                          >
+                              SIGN UP
+                          </button>
+                      </div>
+                  </div>
+                  <div class="row mt-2">
+                      <div class="col text-align-center">
+                        <a routerLink="login"> Login </a>
+                      </div>
+                  </div>
+              </div>
+          </form>        
+      </mat-card>
+  </div>
+</div>
