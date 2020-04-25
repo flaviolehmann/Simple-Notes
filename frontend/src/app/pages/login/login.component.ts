@@ -32,23 +32,6 @@ export class LoginComponent implements OnInit {
   onSubmit(form: FormGroup) {
     this.loading = true;
     const credentials = form.value;
-    // this.segurancaService.login(credentials.user, credentials.password).subscribe({
-    //   next: res => {
-    //     console.log(res)
-    //     this.segurancaService.token = res.headers.get('Authorization').substring(7);
-    //     this.router.navigateByUrl('main');
-    //     form.reset();
-    //   },
-    //   error: err => {
-    //     console.log(err)
-    //     if (err.status === 400) {
-    //       this.snackbar.open('Login ou Senha incorretos...', 'Putz...', { duration: 4500 });
-    //     }
-    //     else {
-    //       this.snackbar.open('Erro Desconhecido.', 'Putz...', { duration: 4500 });
-    //     }
-    //   }
-    // }).add(() => this.loading = false);
     this.segurancaService.login(credentials.user, credentials.password).subscribe(
     (res: HttpResponse<any>) => {
         console.log(res)
@@ -58,7 +41,7 @@ export class LoginComponent implements OnInit {
     },
     err => {
         console.log(err);
-        this.snackbar.open('Erro Desconhecido.', 'Putz...', { duration: 4500 });
+        this.snackbar.open('Sorry, check your password and username.', 'Ok', { duration: 4500 });
       }
     ).add(() => this.loading = false);
   }
