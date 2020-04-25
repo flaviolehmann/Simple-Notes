@@ -1,0 +1,21 @@
+<header>
+  <h1> Are you sure? </h1>
+</header>
+<section>
+  <p> You're about to delete '{{ caderno.nome }}' notebook. </p>
+</section>
+<footer class="d-flex justify-content-end">
+  <button
+    mat-button
+    (click)="onCancel()"
+  >
+    CANCEL
+  </button>
+  <button
+    mat-raised-button
+    color="warn"
+    (click)="onConfirm()"
+  >
+    DELETE
+  </button>
+</footer>
