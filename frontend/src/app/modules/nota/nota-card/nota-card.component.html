@@ -1,0 +1,14 @@
+<mat-card>
+  <header class="d-flex justify-content-between">
+    <div>
+      <h4> {{ nota.titulo }} </h4>
+    </div>
+    <div class="options">
+      <mat-icon (click)="onEdit()"> edit </mat-icon>
+      <mat-icon (click)="onDelete()"> delete </mat-icon>
+    </div>
+  </header>
+  <section>
+    <p> {{ nota.descricao }} </p>
+  </section>
+</mat-card>
