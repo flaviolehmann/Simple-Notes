@@ -1,0 +1,45 @@
+<header> Insert the data of the notebook </header>
+<form [formGroup]="cadernoForm">
+  <section class="container">
+    <div class="row">
+      <div class="col">
+        <mat-form-field >
+          <input
+              matInput
+              autocomplete="off"
+              placeholder="Name"
+              formControlName="nome"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <input
+              matInput
+              autocomplete="off"
+              placeholder="Description"
+              formControlName="descricao"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </section>
+  <div class="d-flex justify-content-end">
+    <button
+      mat-button
+      (click)="onCancel();"
+      color="secondary"
+    >
+      CANCEL
+    </button>
+    <button
+        mat-raised-button
+        (click)="onSubmit();"
+        color="primary"
+    >
+      SAVE
+    </button>
+  </div>
+</form>
