@@ -8,6 +8,7 @@ import { CadastrarSeComponent } from './pages/cadastrar-se/cadastrar-se.componen
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'main', component: MainComponent },
+  { path: '', component: MainComponent },
   { path: 'sign-up', component: CadastrarSeComponent }
 ];
 
