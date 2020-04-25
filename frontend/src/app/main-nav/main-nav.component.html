@@ -1,11 +1,28 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container
+  class="sidenav-container"
+  (updateCadernos)="onUpdateCadernos()"
+>
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar> Menu </mat-toolbar>
+    <mat-toolbar> My Notebooks </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="main"> Home </a>
+      <div *ngFor="let caderno of cadernos">
+        <a
+          mat-list-item
+          (click)="onSelectCaderno(caderno)"
+        >
+          {{ caderno.nome }}
+        </a>
+      </div>
+      <hr>
+      <a
+        mat-list-item
+        (click)="onAddCaderno()"
+      >
+        +1 Notebook
+      </a>
       <a mat-list-item (click)="onLogout()"> Logout </a>
     </mat-nav-list>
   </mat-sidenav>
