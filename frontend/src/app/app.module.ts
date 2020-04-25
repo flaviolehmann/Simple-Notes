@@ -12,6 +12,13 @@ import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CadastrarSeComponent } from './pages/cadastrar-se/cadastrar-se.component';
+import { SegurancaModule } from './modules/seguranca/seguranca.module';
+import { NotaModule } from './modules/nota/nota.module';
+import { CadernoModule } from './modules/caderno/caderno.module';
+import { EditCadernoDialogComponent } from './modules/caderno/edit-caderno-dialog/edit-caderno-dialog.component';
+import { EditNotaDialogComponent } from './modules/nota/edit-nota-dialog/edit-nota-dialog.component';
+import { ExcluirCadernoDialogComponent } from './modules/caderno/excluir-caderno-dialog/excluir-caderno-dialog.component';
+import { ExcluirNotaDialogComponent } from './modules/nota/excluir-nota-dialog/excluir-nota-dialog.component';
 
 const getApiUrl = (currentUrl: string) => {
   switch (currentUrl) {
@@ -39,11 +46,20 @@ const getApiUrl = (currentUrl: string) => {
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SegurancaModule,
+    CadernoModule,
+    NotaModule
   ],
   providers: [
     { provide: 'defaultURL', useValue: getApiUrl(window.location.origin) }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    EditCadernoDialogComponent,
+    EditNotaDialogComponent,
+    ExcluirCadernoDialogComponent,
+    ExcluirNotaDialogComponent
+  ]
 })
 export class AppModule { }
